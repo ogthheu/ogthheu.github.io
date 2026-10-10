@@ -129,17 +129,30 @@
             border-color: #ff5e00;
             box-shadow: 0 6px 20px rgba(255, 94, 0, 0.4);
         }
-/* Стили для новой картинки-логотипа */
-        .boosty-btn img {
+        /* Вырезаем только значок из полного логотипа */
+        .boosty-btn .boosty-icon-wrapper {
             width: 20px;
             height: 20px;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        .boosty-btn .boosty-icon-wrapper img {
+            height: 20px;
+            width: auto;
+            max-width: none;
             object-fit: contain;
             transition: filter 0.25s ease;
+        }
+        /* Делаем значок белым при наведении на кнопку */
+        .boosty-btn:hover .boosty-icon-wrapper img {
+            filter: brightness(0) invert(1);
         }
         /* Делаем оранжевый логотип белым при наведении на кнопку */
         .boosty-btn:hover img {
             filter: brightness(0) invert(1);
-}
+        }
         /* Специфический стиль для Twitch-карточки */
         .twitch-card {
             background: rgba(161, 85, 255, 0.1);
