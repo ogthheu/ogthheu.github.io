@@ -80,10 +80,11 @@
         /* При наведении: делает иконку белой и чуть увеличивает */
         .link-card:hover svg {
                 filter: brightness(0) invert(1);
+                fill: #ffffff;
                 transform: scale(1.1);
 }
         /* Индивидуальная подсветка кнопок при наведении */
-        .tg-btn { color: #24A1DE; } 
+        .tg-btn svg { fill: #24A1DE; }
         /* Цвет иконки Telegram */
         .tg-btn:hover {
                 background: #24A1DE;
@@ -91,21 +92,21 @@
                 box-shadow: 0 6px 20px rgba(36, 161, 222, 0.4);
         }
 
-        .tt-btn { color: #fe2c55; } 
+        .tt-btn svg { fill: #fe2c55; }  
         /* Цвет иконки TikTok */
         .tt-btn:hover {
                 background: #010101;
                 border-color: #fe2c55;
                 box-shadow: -3px 0 10px rgba(37, 244, 238, 0.5), 3px 0 10px rgba(254, 44, 85, 0.5);
 }
-        .insta-btn { color: #dc2743; }
+        .insta-btn svg { fill: #dc2743; }
         /* Цвет иконки Instagram */
         .insta-btn:hover {
                 background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
                 border-color: #dc2743;
                 box-shadow: 0 6px 20px rgba(220, 39, 67, 0.4);
 }
-        .yt-btn { color: #FF0000; } 
+        .yt-btn svg { fill: #FF0000; } 
         /* Цвет иконки YouTube */
         .yt-btn:hover {
                 background: #FF0000;
@@ -151,13 +152,18 @@
             filter: brightness(0) invert(1);
         }
 
-        /* Специфический стиль для Twitch-карточки */
+        /* 1. Цвет только для самой SVG-иконки Твича */
+        .twitch-card svg { 
+            fill: #a155ff; 
+}
+        /* 2. Стили для всей карточки Твича */
         .twitch-card {
             background: rgba(161, 85, 255, 0.1);
-            border: 2px solid #a155ff; 
+            border: 2px solid #a155ff;
             box-shadow: 0 0 10px rgba(161, 85, 255, 0.3), inset 0 0 10px rgba(161, 85, 255, 0.2);
-        }
+}
 
+        
         .twitch-card:hover {
             background: #a155ff;
             border-color: #a155ff;
