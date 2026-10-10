@@ -130,25 +130,13 @@
             box-shadow: 0 6px 20px rgba(255, 94, 0, 0.4);
         }
         /* Вырезаем только значок из полного логотипа */
-        .boosty-btn .boosty-icon-wrapper {
-            width: 20px;
-            height: 20px;
-            overflow: hidden;
-            display: inline-flex;
-            align-items: center;
-            justify-content: flex-start;
-        }
         .boosty-btn .boosty-icon-wrapper img {
             height: 20px;
             width: auto;
             max-width: none;
             object-fit: contain;
             transition: filter 0.25s ease;
-        }
-        /* Делаем значок белым при наведении на кнопку */
-        .boosty-btn:hover .boosty-icon-wrapper img {
-            filter: brightness(0) invert(1);
-        }
+       }
         /* Делаем оранжевый логотип белым при наведении на кнопку */
         .boosty-btn:hover img {
             filter: brightness(0) invert(1);
@@ -268,10 +256,11 @@
                 Поддержать донатом
             </a>
             
-            <!-- 8. Кнопка Boosty только со значком (Исправленная ссылка) -->
-            <a href="https://boosty.to" target="_blank" class="link-card boosty-btn">
+            <!-- 8. Кнопка Boosty только со значком (Исправленная прямая ссылка) -->
+            <a href="https://boosty.to/lissi4ko" target="_blank" class="link-card boosty-btn">
                 <div class="boosty-icon-wrapper">
-                    <img src="https://iconify.design" alt="Boosty">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/92/Boosty_logo.svg?utm_source=ru.wikipedia.org&utm_campaign=index&utm_content=original" alt="Boosty">
                 </div>
                 Эксклюзивный контент на Boosty
             </a>
+
