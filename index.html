@@ -71,43 +71,47 @@
             position: relative;
         }
 
-        /* Стили для SVG иконок */
+        /* Базовый стиль для SVG-иконок всех кнопок */
         .link-card svg {
-            width: 20px;
-            height: 20px;
-            fill: currentColor;
-            transition: transform 0.25s ease;
+                width: 20px;
+                height: 20px;
+                transition: filter 0.25s ease, transform 0.25s ease;
         }
-
+        /* При наведении: делает иконку белой и чуть увеличивает */
         .link-card:hover svg {
-            transform: scale(1.1);
-        }
-
+                filter: brightness(0) invert(1);
+                transform: scale(1.1);
+}
         /* Индивидуальная подсветка кнопок при наведении */
+        .tg-btn { color: #24A1DE; } 
+        /* Цвет иконки Telegram */
         .tg-btn:hover {
-            background: #24A1DE;
-            border-color: #24A1DE;
-            box-shadow: 0 6px 20px rgba(36, 161, 222, 0.4);
+                background: #24A1DE;
+                border-color: #24A1DE;
+                box-shadow: 0 6px 20px rgba(36, 161, 222, 0.4);
         }
 
+        .tt-btn { color: #fe2c55; } 
+        /* Цвет иконки TikTok */
         .tt-btn:hover {
-            background: #010101;
-            border-color: #fe2c55;
-            box-shadow: -3px 0 10px rgba(37, 244, 238, 0.5), 3px 0 10px rgba(254, 44, 85, 0.5);
-        }
-
+                background: #010101;
+                border-color: #fe2c55;
+                box-shadow: -3px 0 10px rgba(37, 244, 238, 0.5), 3px 0 10px rgba(254, 44, 85, 0.5);
+}
+        .insta-btn { color: #dc2743; }
+        /* Цвет иконки Instagram */
         .insta-btn:hover {
-            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-            border-color: #dc2743;
-            box-shadow: 0 6px 20px rgba(220, 39, 67, 0.4);
-        }
-
+                background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+                border-color: #dc2743;
+                box-shadow: 0 6px 20px rgba(220, 39, 67, 0.4);
+}
+        .yt-btn { color: #FF0000; } 
+        /* Цвет иконки YouTube */
         .yt-btn:hover {
-            background: #FF0000;
-            border-color: #FF0000;
-            box-shadow: 0 6px 20px rgba(255, 0, 0, 0.4);
-        }
-
+                background: #FF0000;
+                border-color: #FF0000;
+                box-shadow: 0 6px 20px rgba(255, 0, 0, 0.4);
+}
         .da-btn:hover {
             background: #F47321;
             border-color: #F47321;
@@ -267,5 +271,3 @@
                 <span class="boosty-icon-wrapper"><img src="https://logo-teka.com/wp-content/uploads/2025/06/boosty-sign-logo.svg" alt="Boosty"></span>
                 Эксклюзивный контент на Boosty
             </a>
-
-
