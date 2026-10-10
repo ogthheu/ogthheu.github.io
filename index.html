@@ -31,13 +31,53 @@
 
         /* Никнейм Lissi4ko */
         h1 {
-            font-size: 26px;
-            margin: 0 0 8px 0;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            color: #ffffff;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            cursor: pointer; 
+        /* Делает заголовок кликабельным */
+            user-select: none;
         }
-
+        /* Иконка стрелочки */
+        .bio-toggle-arrow {
+            font-size: 18px;
+            color: #ff7a00;
+            transition: transform 0.3s ease;
+        }
+        /* Переворот стрелочки при активации */
+        .bio-toggle-arrow.active {
+            transform: rotate(180deg);
+        }
+        /* Контейнер выпадающей биографии */
+        .bio-dropdown {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, opacity 0.3s ease;
+            opacity: 0;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 122, 0, 0.0);
+            border-radius: 14px;
+            margin-top: -4px;
+            margin-bottom: 24px;
+            backdrop-filter: blur(5px);
+        }
+        /* Класс, который будет добавляться через JS для плавного открытия */
+        .bio-dropdown.open {
+            max-height: 500px; 
+        /* Достаточная высота для текста */
+            opacity: 1;
+            border-color: rgba(255, 122, 0, 0.15);
+            padding: 16px;
+        }
+        /* Стиль текста внутри биографии */
+        .bio-text {
+            font-size: 14px;
+            color: #d1c2b7;
+            line-height: 1.6;
+            text-align: left;
+            margin: 0;
+        }
         /* Описание */
         .description {
             font-size: 15px;
