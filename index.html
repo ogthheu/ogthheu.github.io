@@ -77,11 +77,15 @@
                 height: 20px;
                 transition: filter 0.25s ease, transform 0.25s ease;
         }
-        /* При наведении: делает иконку белой и чуть увеличивает */
-        .link-card:hover svg {
-            filter: brightness(0) invert(1);
-            transform: scale(1.1);
+        .link-card:hover svg,
+        .link-card:hover img {
+                filter: brightness(0) invert(1) !important;
 }
+        /* Чуть увеличиваем иконку при наведении */
+        .link-card:hover svg {
+                transform: scale(1.1);
+}
+
         /* Индивидуальная подсветка кнопок при наведении */
         .tg-btn svg { fill: #24A1DE; }
         /* Цвет иконки Telegram */
@@ -91,7 +95,7 @@
                 box-shadow: 0 6px 20px rgba(36, 161, 222, 0.4);
         }
 
-        .tt-btn svg { fill: #fe2c55; }  
+        .tt-btn svg { fill: #fa69be; }  
         /* Цвет иконки TikTok */
         .tt-btn:hover {
                 background: #010101;
