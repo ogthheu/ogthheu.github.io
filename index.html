@@ -321,7 +321,17 @@
     <p class="bio-text">
         Привет! БИОГРАФИЯ
         <br><br>
-        
+        <script>
+            const bioToggle = document.getElementById('bioToggle');
+            const bioDropdown = document.getElementById('bioDropdown');
+            const toggleArrow = bioToggle.querySelector('.bio-toggle-arrow');
+            
+            bioToggle.addEventListener('click', () => {
+                bioDropdown.classList.toggle('open');
+                toggleArrow.classList.toggle('active');
+            });
+        </script>
+</body>
     </p>
 </div>
 
