@@ -52,7 +52,7 @@
             gap: 14px;
         }
 
-        /* Базовый стиль для всех обычных кнопок */
+        /* Базовый стиль для всех кнопок */
         .link-card {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 122, 0, 0.15);
@@ -66,30 +66,118 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 12px;
             backdrop-filter: blur(5px);
+            position: relative;
         }
 
-        .link-card:hover {
-            background: linear-gradient(90deg, #ff7a00 0%, #ff5500 100%);
-            border-color: #ff7a00;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 85, 0, 0.4);
+        /* Стили для SVG иконок */
+        .link-card svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+            transition: transform 0.25s ease;
         }
 
-        /* Особая кнопка для Twitch с неоновым контуром */
+        .link-card:hover svg {
+            transform: scale(1.1);
+        }
+
+        /* Индивидуальная подсветка кнопок при наведении */
+        .tg-btn:hover {
+            background: #24A1DE;
+            border-color: #24A1DE;
+            box-shadow: 0 6px 20px rgba(36, 161, 222, 0.4);
+        }
+
+        .tt-btn:hover {
+            background: #010101;
+            border-color: #fe2c55;
+            box-shadow: -3px 0 10px rgba(37, 244, 238, 0.5), 3px 0 10px rgba(254, 44, 85, 0.5);
+        }
+
+        .insta-btn:hover {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            border-color: #dc2743;
+            box-shadow: 0 6px 20px rgba(220, 39, 67, 0.4);
+        }
+
+        .yt-btn:hover {
+            background: #FF0000;
+            border-color: #FF0000;
+            box-shadow: 0 6px 20px rgba(255, 0, 0, 0.4);
+        }
+
+        .da-btn:hover {
+            background: #F47321;
+            border-color: #F47321;
+            box-shadow: 0 6px 20px rgba(244, 115, 33, 0.4);
+        }
+
+        .boosty-btn:hover {
+            background: #ff5e00;
+            border-color: #ff5e00;
+            box-shadow: 0 6px 20px rgba(255, 94, 0, 0.4);
+        }
+
+        /* Специфический стиль для Twitch-карточки */
         .twitch-card {
             background: rgba(161, 85, 255, 0.1);
             border: 2px solid #a155ff; 
             box-shadow: 0 0 10px rgba(161, 85, 255, 0.3), inset 0 0 10px rgba(161, 85, 255, 0.2);
         }
 
-        /* Усиление неонового свечения при наведении на Twitch */
         .twitch-card:hover {
             background: #a155ff;
             border-color: #a155ff;
             transform: translateY(-2px);
             box-shadow: 0 0 20px rgba(161, 85, 255, 0.7), 0 0 40px rgba(161, 85, 255, 0.4);
+        }
+
+        /* Пульсирующий индикатор LIVE */
+        .live-badge {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 0, 0, 0.2);
+            border: 1px solid #ff0000;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            color: #ff3333;
+            position: absolute;
+            right: 16px;
+            text-transform: uppercase;
+        }
+
+        .live-dot {
+            width: 6px;
+            height: 6px;
+            background-color: #ff3333;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(0.9);
+                box-shadow: 0 0 0 0 rgba(255, 51, 51, 0.7);
+            }
+            70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 6px rgba(255, 51, 51, 0);
+            }
+            100% {
+                transform: scale(0.9);
+                box-shadow: 0 0 0 0 rgba(255, 51, 51, 0);
+            }
+        }
+
+        /* Небольшое смещение при наведении на все обычные кнопки */
+        .link-card:not(.twitch-card):hover {
+            transform: translateY(-2px);
         }
     </style>
 </head>
@@ -100,37 +188,34 @@
         <h1>Lissi4ko 🦊</h1>
 
         <!-- Описание приветствия -->
-        <div class="description">Добро пожаловать! Рада тебя видеть на своих трансляциях 🧡 </div>
-        <div class="description"> Здесь собраны все мои официальные соцсети и полезные ссылки.</div>
+        <div class="description">🧡Здесь собраны все мои официальные соцсети и полезные ссылки🧡</div>
 
         <div class="links-container">
             
-            <!-- 1. Твич с неоном -->
-            <a href="https://twitch.tv" target="_blank" class="link-card twitch-card">🟣 Прямые эфиры на Twitch</a>
+            <!-- 1. Твич с неоном и LIVE статусом -->
+            <a href="https://www.twitch.tv/lissi4ko" target="_blank" class="link-card twitch-card">
+                <svg viewBox="0 0 24 24"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.43l-3.428 3.428v-3.428H5.143V1.714h15.429z"/></svg>
+                Прямые эфиры на Twitch
+                <div class="live-badge"><span class="live-dot"></span>live</div>
+            </a>
 
             <!-- 2. Телеграм -->
-            <a href="https://t.me" target="_blank" class="link-card">✈️ Мой Telegram канал</a>
+            <a href="https://t.me/lissi4ko" target="_blank" class="link-card tg-btn">
+                <svg viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.562 8.161c-.18 1.897-.962 6.502-1.359 8.627-.168.9-.501 1.201-.82 1.23-.697.064-1.226-.461-1.901-.903-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.911.177-.184 3.249-2.978 3.308-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.324-.437.893-.663 3.506-1.524 5.845-2.528 7.018-3.013 3.344-1.385 4.039-1.626 4.492-1.634.099-.002.321.022.464.139.119.098.152.23.165.324.012.096.016.297-.002.459z"/></svg>
+                Мой Telegram канал
+            </a>
             
             <!-- 3. Тикток -->
-            <a href="https://tiktok.com" target="_blank" class="link-card">🎵 Мой TikTok</a>
+            <a href="https://www.tiktok.com/@lissivai" target="_blank" class="link-card tt-btn">
+                <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31.01 2.61.03 3.91.05.08 1.54.49 3.03 1.41 4.25a7.1 7.1 0 0 0 3.63 2.37c.02 1.34.02 2.68.01 4.02-1.34-.02-2.65-.35-3.83-1.01a7.84 7.84 0 0 1-2.91-2.97c-.03 2.76-.04 5.51-.06 8.27-.06 1.4-.49 2.79-1.29 3.92a6.97 6.97 0 0 1-5.61 2.99c-1.56-.03-3.11-.57-4.32-1.57A7.32 7.32 0 0 1 .15 15.31a7.5 7.5 0 0 1 2.21-6.1c1.36-1.19 3.16-1.76 4.96-1.58v4.06c-.85-.15-1.74.05-2.42.58a3.3 3.3 0 0 0-1.12 3.13c.18 1.13.97 2.09 2.05 2.45a3.34 3.34 0 0 0 4.07-1.85c.34-.84.39-1.77.38-2.68L10.3 0c.74.01 1.48.01 2.22.02z"/></svg>
+                Мой TikTok
+            </a>
             
             <!-- 4. Личный Инстаграм -->
-            <a href="https://instagram.com" target="_blank" class="link-card">📸 Личный Instagram</a>
+            <a href="https://www.instagram.com/lissi4ko" target="_blank" class="link-card insta-btn">
+                <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+                Личный Instagram
+            </a>
 
             <!-- 5. Косплей Инстаграм -->
-            <a href="https://instagram.com_cos" target="_blank" class="link-card">🎭 Косплей Instagram</a>
-            
-            <!-- 6. Ютуб -->
-            <a href="https://youtube.com" target="_blank" class="link-card">🎬 Канал на YouTube</a>
-            
-            <!-- 7. Донаты -->
-            <a href="https://donationalerts.com" target="_blank" class="link-card">🔥 Поддержать (DonationAlerts)</a>
-            
-            <!-- 8. Бусти -->
-            <a href="https://boosty.to" target="_blank" class="link-card">🧡 Эксклюзивный контент на Boosty</a>
-            
-        </div>
-    </div>
-
-</body>
-</html>
+            <a href="https://www.instagram.com/lissi4ko_cos" target="_blank" class="link-card insta-btn">
