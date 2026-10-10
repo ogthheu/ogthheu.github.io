@@ -6,6 +6,7 @@
     <title>Lissi4ko | Все ссылки</title>
     <style>
         /* Стильный темный фон с теплым лисьим отливом */
+                /* Стильный темный фон с теплым лисьим отливом */
         body {
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background: radial-gradient(circle at 50% 30%, #2b1405 0%, #0a0604 70%);
@@ -19,9 +20,10 @@
             margin: 0;
             padding: 40px 20px;
             box-sizing: border-box;
-            /* Лапка*/
+            /* Курсор лапка*/
             cursor: url("data:image/svg+xml,%3Csvg xmlns='http://w3.org' viewBox='0 0 24 24' width='32' height='32'%3E%3Cpath fill='%23ff7a00' d='M12 14c-1.66 0-3 1.34-3 3 0 2 2 3.5 3 4.5 1-1 3-2.5 3-4.5 0-1.66-1.34-3-3-3zm-4.5-3c-1.1 0-2 .9-2 2s1.5 2.5 2 3.5c.5-1 2-2.4 2-3.5 0-1.1-.9-2-2-2zm9 0c-1.1 0-2 .9-2 2 0 1.1 1.5 2.5 2 3.5.5-1 2-2.4 2-3.5 0-1.1-.9-2-2-2zm-7.5-4C8.1 7 7.3 7.8 7.3 8.8c0 .8 1.1 1.9 1.5 2.6.4-.7 1.5-1.8 1.5-2.6 0-1-.8-1.8-1.8-1.8zm6 0c-.9 0-1.7.8-1.7 1.8 0 .8 1.1 1.9 1.5 2.6.4-.7 1.5-1.8 1.5-2.6 0-1-.8-1.8-1.8-1.8z'/%3E%3C/svg%3E") 16 16, auto;
         }
+
         /* Контейнер визитки */
         .container {
             width: 100%;
@@ -35,9 +37,6 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
-            cursor: pointer; 
-        /* Делает заголовок кликабельным */
-            user-select: none;
         }
         /* Описание */
         .description {
@@ -226,50 +225,7 @@
             gap: 8px;
             user-select: none;
         }
-        /* Иконка стрелочки */
-        .bio-toggle-arrow {
-            font-size: 18px;
-            color: #ff7a00;
-            transition: transform 0.3s ease;
-        }
-        /* Переворот стрелочки при активации */
-        .bio-toggle-arrow.active {
-            transform: rotate(180deg);
-        }
-        /* Контейнер выпадающей биографии */
-        .bio-dropdown {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease-out, opacity 0.3s ease;
-            opacity: 0;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 122, 0, 0.0);
-            border-radius: 14px;
-            margin-top: -4px;
-            margin-bottom: 24px;
-            backdrop-filter: blur(5px);
-        }
-        /* Класс, который будет добавляться через JS для плавного открытия */
-        .bio-dropdown.open {
-            max-height: 500px;
-            opacity: 1;
-            border-color: rgba(255, 122, 0, 0.15);
-            padding: 16px;
-        }
-        /* Стиль текста внутри биографии */
-        .bio-text {
-            font-size: 14px;
-            color: #d1c2b7;
-            line-height: 1.6;
-            text-align: left;
-            margin: 0;
-        }
-        /* Указатель при наведении на кнопки и спойлер */
-        .link-card, #bioToggle {
-            cursor: pointer;
-        }
-        
-    </style>
+        </style>
 </head>
 <body>
 
