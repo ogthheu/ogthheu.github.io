@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lissi4ko | Все ссылки</title>
+    <style>
+        /* Стильный темный фон с теплым лисьим отливом */
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, #120c08 0%, #1e120a 100%);
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            margin: 0;
+            padding: 40px 20px;
+            box-sizing: border-box;
+            cursor: default;
+        }
+
+        /* Контейнер визитки */
+        .container {
+            width: 100%;
+            max-width: 430px;
+            text-align: center;
+        }
+
+        /* Неоновая лисья аватарка */
+        .avatar {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            border: 3px solid #ff7a00; 
+            box-shadow: 0 0 20px rgba(255, 122, 0, 0.4);
+            object-fit: cover;
+            margin-bottom: 15px;
+            background-color: #1a1a1a;
+        }
+
+        /* Никнейм Lissi4ko */
+        h1 {
+            font-size: 26px;
+            margin: 0 0 8px 0;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: #ffffff;
+        }
+
+        /* Описание */
+        .description {
+            font-size: 15px;
+            color: #d1c2b7;
+            margin-bottom: 30px;
+            line-height: 1.4;
+        }
+
+        /* Список кнопок */
+        .links-container {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        /* Базовый стиль для всех обычных кнопок */
+        .link-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 122, 0, 0.15);
+            border-radius: 14px;
+            padding: 16px;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            backdrop-filter: blur(5px);
+        }
+
+        .link-card:hover {
+            background: linear-gradient(90deg, #ff7a00 0%, #ff5500 100%);
+            border-color: #ff7a00;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 85, 0, 0.4);
+        }
+
+        /* Особая кнопка для Twitch с неоновым контуром */
+        .twitch-card {
+            background: rgba(161, 85, 255, 0.1);
+            border: 2px solid #a155ff; 
+            box-shadow: 0 0 10px rgba(161, 85, 255, 0.3), inset 0 0 10px rgba(161, 85, 255, 0.2);
+        }
+
+        /* Усиление неонового свечения при наведении на Twitch */
+        .twitch-card:hover {
+            background: #a155ff;
+            border-color: #a155ff;
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(161, 85, 255, 0.7), 0 0 40px rgba(161, 85, 255, 0.4);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Заглушка аватара -->
+        <img class="avatar" src="https://dicebear.com" alt="Lissi4ko">
+
+        <!-- Никнейм -->
+        <h1>Lissi4ko 🦊</h1>
+
+        <!-- Описание-блокнот -->
+        <div class="description">Добро пожаловать! Рада тебе на своих трансляциях 🧡 Здесь собраны все мои официальные соцсети и полезные ссылки.</div>
+
+        <div class="links-container">
+            
+            <!-- 1. Твич с неоном -->
+            <a href="https://twitch.tv" target="_blank" class="link-card twitch-card">🟣 Прямые эфиры на Twitch</a>
+
+            <!-- 2. Телеграм -->
+            <a href="https://t.me" target="_blank" class="link-card">✈️ Мой Telegram канал</a>
+            
+            <!-- 3. Тикток -->
+            <a href="https://tiktok.com" target="_blank" class="link-card">🎵 Мой TikTok</a>
+            
+            <!-- 4. Личный Инстаграм -->
+            <a href="https://instagram.com" target="_blank" class="link-card">📸 Личный Instagram</a>
+
+            <!-- 5. Косплей Инстаграм -->
+            <a href="https://instagram.com" target="_blank" class="link-card">🎭 Косплей Instagram</a>
+            
+            <!-- 6. Ютуб -->
+            <a href="https://youtube.com" target="_blank" class="link-card">🎬 Канал на YouTube</a>
+            
+            <!-- 7. Донаты -->
+            <a href="https://donationalerts.com" target="_blank" class="link-card">🔥 Поддержать (DonationAlerts)</a>
+            
+            <!-- 8. Бусти -->
+            <a href="https://boosty.to" target="_blank" class="link-card">🧡 Эксклюзивный контент на Boosty</a>
+            
+        </div>
+    </div>
+
+</body>
+</html>
